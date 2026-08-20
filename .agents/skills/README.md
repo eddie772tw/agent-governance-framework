@@ -26,6 +26,7 @@
 | `huge-component-refactoring` | `huge-component-refactoring/SKILL.md` | 拆分超過 250 行之程式碼/UI 元件，或優化高頻運算/渲染 Hot-path | 狀態機抽離與對應的單元測試 |
 | `pr-author-maintainer` | `pr-author-maintainer/SKILL.md` | 作為 PR 作者/維護者撰寫 PR、Living PR Body 動態同步、Pre-Commit 測試門檻與身分標記 | `references/pr_author_workflow_guide.md` 與 `scripts/manage_pr_author.py` |
 | `pr-review-evaluation` | `pr-review-evaluation/SKILL.md` | 評估 PR 狀態、CI 結果並標準化發表 Review 意見（含原生 Inline Comments / Suggestions） | `references/github_inline_comments_guide.md` 與 `scripts/submit_pr_review.py` |
+| `code-quality-linting` | `code-quality-linting/SKILL.md` | 編寫/重構代碼、配置 Linter/Formatter、落實 PEP 8 等語法規範與 Commit 前檢查 | `references/linter_configuration_matrix.md` 與 `scripts/verify_code_style.py` |
 | `github-security-audit` | `github-security-audit/SKILL.md` | 收集、審查或修復 GitHub Code Scanning/CodeQL、Dependabot、Secret Scanning 弱點 | `references/github_security_api_guide.md` 與 `scripts/collect_security_alerts.py` |
 | `portable-release-validation` | `portable-release-validation/SKILL.md` | 跨平台發行打包、獨立執行檔驗證、執行期相依隔離與煙霧測試 | 發行配置、打包腳本與環境診斷 |
 

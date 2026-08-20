@@ -41,7 +41,7 @@ pytest tests/ -v
 
 ### 3. Scaffold into Target Workspace
 ```bash
-# Full preset (All 10 core skills)
+# Full preset (All 11 core skills)
 python scripts/init_agent_workspace.py --target /path/to/project --preset full
 
 # Python-optimized preset

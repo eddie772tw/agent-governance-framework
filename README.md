@@ -86,7 +86,7 @@ python scripts/init_agent_workspace.py --target /path/to/my-project --preset pyt
 
 ---
 
-## 10 大核心技能矩陣
+## 11 大核心技能矩陣
 
 | 技能 ID | 職責與範疇 | 自動化工具支援 |
 |---|---|---|
@@ -96,6 +96,7 @@ python scripts/init_agent_workspace.py --target /path/to/my-project --preset pyt
 | `jules_coding` | 雲端/非同步代理委派安全邊界與結果驗收 | 授權審查與 Diff 檢查清單 |
 | `modular-refactoring` | 高內聚低耦合、純函數抽離與型別契約優先 | 測試先行 SOP |
 | `huge-component-refactoring` | 250 行代碼拆分原則、狀態機抽離與高頻熱路徑保護 | 零物件分配與資源清理規範 |
+| `code-quality-linting` | 靜態語法檢查、PEP 8/代碼風格合規與 Formatter 配置 | `verify_code_style.py` |
 | `pr-author-maintainer` | PR 作者工作流、Living PR Body 同步與身分標記 | `manage_pr_author.py` |
 | `pr-review-evaluation` | 標準化 Review、原生 Inline Comments 與建議代碼提交 | `submit_pr_review.py` |
 | `github-security-audit` | CodeQL、Dependabot、Secret Scanning 自動收集 | `collect_security_alerts.py` |

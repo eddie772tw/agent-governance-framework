@@ -13,8 +13,8 @@
 Canonical skill registry 位於 `.agents/skills/README.md`。目前標準技能包含：
 `agent-governance-audit`、`cross-agent-collaboration`、`codex-antigravity-bridge`、
 `jules_coding`、`modular-refactoring`、`huge-component-refactoring`、
-`pr-author-maintainer`、`pr-review-evaluation`、`github-security-audit`、
-`portable-release-validation`。
+`pr-author-maintainer`、`pr-review-evaluation`、`code-quality-linting`、
+`github-security-audit`、`portable-release-validation`。
 
 Agent 文件、技能說明、工作日誌與規範內容以繁體中文為主。只有技能 ID、檔名、API、CI、React、TypeScript 等技術專有名詞，以及可能造成歧義的術語保留英文。
 
@@ -22,10 +22,14 @@ Agent 文件、技能說明、工作日誌與規範內容以繁體中文為主�
 
 ## 專案核心事實與領域工程規範 (Core Invariants)
 
-1. **核心/高頻效能保護 (Performance & Non-blocking Loop)**：在任何高頻輪詢、串流接收、事件主迴圈或渲染 Hot-path 內，**絕不可放置同步阻塞 (Synchronous Blocking) 或高開銷的 I/O 操作**。所有耗時運算與網路 I/O 必須非同步化或移至背景工作線程。
-2. **核心演算法與業務邏輯單一真理 (Single Source of Truth)**：所有核心計算公式、業務決策樹與驗證規則，必須嚴格維持為「無副作用純函數 (Pure Functions)」，並集中收攏於領域模組中，嚴禁將業務計算零散寫死於 UI 組件中。
-3. **路徑安全與檔案包含性規範 (Path Security & Containment)**：所有涉及外部輸入、檔案名稱、使用者上傳或動態路徑存取的模組，必須進行目錄包含性檢驗（防止 `../` 目錄穿越攻擊），嚴禁未經校驗直接拼接使用者輸入路徑。
-4. **單一職責與 250 行重構原則**：單一檔案若超過 250 行，或職責出現發散（如混雜數據解析、狀態管理與視圖渲染），必須主動評估拆分。
+1. **語法規範與 Linter 嚴格遵守 (Code Quality & PEP 8 Compliance)**：
+   - 專案內必須配置並嚴格遵守語法規範（如 Python **PEP 8 / PEP 257**、TypeScript Strict Mode、Rust API Guidelines 等）。
+   - Agent 在編寫或重構代碼後，**必須執行 Linter (如 `ruff check`) 與 Formatter (如 `ruff format`)**，達成 0 錯誤、0 警告。
+   - 嚴禁濫用無理由之忽略標記（如未註明具體原因之 `# noqa` 或 `eslint-disable`）。
+2. **核心/高頻效能保護 (Performance & Non-blocking Loop)**：在任何高頻輪詢、串流接收、事件主迴圈或渲染 Hot-path 內，**絕不可放置同步阻塞 (Synchronous Blocking) 或高開銷的 I/O 操作**。所有耗時運算與網路 I/O 必須非同步化或移至背景工作線程。
+3. **核心演算法與業務邏輯單一真理 (Single Source of Truth)**：所有核心計算公式、業務決策樹與驗證規則，必須嚴格維持為「無副作用純函數 (Pure Functions)」，並集中收攏於領域模組中，嚴禁將業務計算零散寫死於 UI 組件中。
+4. **路徑安全與檔案包含性規範 (Path Security & Containment)**：所有涉及外部輸入、檔案名稱、使用者上傳或動態路徑存取的模組，必須進行目錄包含性檢驗（防止 `../` 目錄穿越攻擊），嚴禁未經校驗直接拼接使用者輸入路徑。
+5. **單一職責與 250 行重構原則**：單一檔案若超過 250 行，或職責出現發散（如混雜數據解析、狀態管理與視圖渲染），必須主動評估拆分。
 
 ---
 
@@ -33,7 +37,7 @@ Agent 文件、技能說明、工作日誌與規範內容以繁體中文為主�
 
 ### 核心工程原則
 1. **確定性與無副作用設計**：純邏輯計算模組不得依賴全域可變狀態或外部 UI 組件生命週期。
-2. **嚴格 Commit 前測試門檻 (Strict Pre-Commit Gate)**：在提交或推送任何程式碼修改前，必須落實執行專案定義的靜態檢查、代碼格式化與單元測試，嚴禁將已知測試失敗的代碼推送至共用分支。
+2. **嚴格 Commit 前測試與 Linter 門檻 (Strict Pre-Commit Gate)**：在提交或推送任何程式碼修改前，必須落實執行專案定義的靜態語法檢查 (Lint)、代碼格式化 (Format) 與單元測試，嚴禁將已知測試失敗或格式未對齊的代碼推送至共用分支。
 3. **無裝飾性符號規範 (No Decorative Emojis)**：所有 UI 介面、字串、命令列輸出與日誌輸出，嚴禁加入裝飾性 Emoji 圖示，保持專業、極簡與高可讀性，並確保 Windows/Linux 終端 UTF-8 編碼安全。
 4. **活文件持續同步原則 (Living Documentation)**：隨著功能迭代、重構或修復，必須同步更新 PR 頂層 Body、架構圖、API 文件與 README，防止文件漂移 (Documentation Drift)。
 
