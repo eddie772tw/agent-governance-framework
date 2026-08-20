@@ -39,7 +39,11 @@ python scripts/init_agent_workspace.py --target ../my-awesome-app --project-name
 在目標專案中執行稽核，確認所有 Skill ID 與索引對齊：
 
 ```bash
-python .agents/skills/agent-governance-audit/scripts/run_governance_audit.py
+# 若已安裝 agent-cli 套件
+agent-cli audit
+
+# 或直接執行腳本
+python scripts/run_governance_audit.py
 ```
 
 ---
