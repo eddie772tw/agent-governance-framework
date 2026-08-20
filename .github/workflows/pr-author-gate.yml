@@ -1,0 +1,39 @@
+name: PR Author Compliance Gate
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  validate-pr-body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate PR Body & Disallowed Assertions
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          python -c '
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, ".agents/skills/pr-author-maintainer/scripts")
+          from manage_pr_author import validate_pr_body
+
+          pr_body = os.environ.get("PR_BODY", "")
+          is_valid, errors, warnings = validate_pr_body(pr_body, strict_identity=False)
+          for w in warnings:
+              print(f"[Warning] {w}")
+          if not is_valid:
+              print("::error::PR Body 驗證未通過：")
+              for err in errors:
+                  print(f"::error::{err}")
+              sys.exit(1)
+          print("[Success] PR Body 格式與合規檢查通過！")
+          '

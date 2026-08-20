@@ -1,0 +1,39 @@
+[project]
+name = "agent-governance-framework"
+version = "1.0.0"
+description = "Universal Agent Governance Framework & Multi-Agent Collaboration Suite"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "eddie772tw" }
+]
+keywords = [
+    "ai-agents",
+    "agent-governance",
+    "antigravity",
+    "codex",
+    "jules",
+    "multi-agent",
+    "code-quality"
+]
+dependencies = []
+
+[project.scripts]
+agent-cli = "agent_cli.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
