@@ -14,8 +14,12 @@ htmlcov/
 
 # Node / Frontend
 node_modules/
+# Python build distributions & metadata
 dist/
 build/
+*.egg-info/
+*.egg
+*.whl
 *.log
 
 # OS & IDE

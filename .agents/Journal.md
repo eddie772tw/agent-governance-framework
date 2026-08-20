@@ -53,3 +53,19 @@
   1. 確保所有高頻處理器僅執行記憶體內資料轉譯與非同步分發。
   2. 將「高頻效能保護」納入 `AGENTS.md` 核心規範。
 - **Evidence**：高頻負載測試無掉封包、CPU 佔用率維持低水位。
+
+---
+
+### 2026-08-20 / CI 建置修復、PEP 639 授權與 Setuptools Flat-Layout 套件發現防護
+
+- **來源**：`local`，針對線上 GitHub Actions CI 建置失敗與 Setuptools 套件發現機制進行修復與防護。
+- **狀態**：`adopted`。
+- **Learning**：
+  1. **Setuptools Flat-Layout 多目錄衝突**：在無 `src/` layout 的扁平架構下，若專案根目錄同時存在多個資料夾（例如 `agent_cli` 與 `templates`），Setuptools 為防範非預期套件打包會直接終止 build 並報錯 `Multiple top-level packages discovered in a flat-layout`。必須在 `pyproject.toml` 明確配置 `[tool.setuptools.packages.find]` 指定 include/exclude 範圍。
+  2. **PEP 639 授權標記演進**：Setuptools 77.0+ 棄用 `project.license = { text = "MIT" }` table 寫法，改為直接使用 SPDX 字串表達式 `license = "MIT"`，消除 CI 建置過程中的棄用告警。
+  3. **建置產物工作區隔離**：執行 `pip install -e .` 或 wheel 建置產生的 `*.egg-info/` 與 `*.whl` 必須納入 `.gitignore` 排除，防止污染 Git 工作區。
+- **Action**：
+  1. 於 `pyproject.toml` 加入 `[tool.setuptools.packages.find] include = ["agent_cli*"]`。
+  2. 將 `project.license` 改為標準 SPDX 字串 `"MIT"`。
+  3. 於 `.gitignore` 排除 `*.egg-info/`、`*.egg` 與 `*.whl`。
+- **Evidence**：本地 `pip install -e .` 與 wheel 打包全數成功；25 項單元測試、Ruff 靜態檢查與治理稽核 100% 通過。
