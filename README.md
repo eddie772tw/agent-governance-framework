@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/eddie772tw/agent-governance-framework/actions"><img src="https://github.com/eddie772tw/agent-governance-framework/actions/workflows/agent-governance-ci.yml/badge.svg" alt="CI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg" alt="License: MIT OR Apache-2.0"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-blue" alt="English Documentation"></a>
@@ -165,5 +165,5 @@ python scripts/init_agent_workspace.py --target /path/to/web-app --preset node
 ---
 
 ## 授權條款 (License)
-
-本專案採用 [MIT License](LICENSE) 授權，歡迎自由整合至個人開源或企業內部專案中。
+ 
+本專案採用 [MIT](LICENSE-MIT) OR [Apache-2.0](LICENSE-APACHE) 雙授權模式，使用者可依自身法務政策自由選用。詳細條款請參閱 [LICENSE](LICENSE)、[LICENSE-MIT](LICENSE-MIT) 與 [LICENSE-APACHE](LICENSE-APACHE)。

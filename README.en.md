@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/eddie772tw/agent-governance-framework/actions"><img src="https://github.com/eddie772tw/agent-governance-framework/actions/workflows/agent-governance-ci.yml/badge.svg" alt="CI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg" alt="License: MIT OR Apache-2.0"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/Language-繁體中文-blue" alt="Traditional Chinese Documentation"></a>
@@ -164,4 +164,4 @@ Contributions, issues, and feature requests are welcome! Please check out [CONTR
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is dual-licensed under either the [MIT License](LICENSE-MIT) or the [Apache-2.0 License](LICENSE-APACHE) at your option. See [LICENSE](LICENSE), [LICENSE-MIT](LICENSE-MIT), and [LICENSE-APACHE](LICENSE-APACHE) for details.

@@ -69,3 +69,18 @@
   2. 將 `project.license` 改為標準 SPDX 字串 `"MIT"`。
   3. 於 `.gitignore` 排除 `*.egg-info/`、`*.egg` 與 `*.whl`。
 - **Evidence**：本地 `pip install -e .` 與 wheel 打包全數成功；25 項單元測試、Ruff 靜態檢查與治理稽核 100% 通過。
+
+---
+
+### 2026-08-20 / MIT OR Apache-2.0 雙授權架構實作
+
+- **來源**：`local`，為兼顧腳手架模板零摩擦注入與企業級專利防護，採用雙授權架構。
+- **狀態**：`adopted`。
+- **Learning**：
+  1. **雙授權之優勢互補**：MIT 提供極簡且無門檻的複製與使用體驗，適合腳手架注入；Apache-2.0 提供明確專利授權、專利反訴防禦與商標保護條款，滿足大型企業法務與跨代理生態系之安全合規要求。
+  2. **標準檔案佈局**：建立 `LICENSE-MIT` 與 `LICENSE-APACHE` 完整條文，頂層 `LICENSE` 聲明雙授權選用機制；`pyproject.toml` 以 PEP 639 SPDX 表達式標註 `license = "MIT OR Apache-2.0"`。
+- **Action**：
+  1. 建立 `LICENSE-MIT` 與 `LICENSE-APACHE`，更新 `LICENSE` 為雙授權說明。
+  2. 更新 `pyproject.toml` 中的 `license` 欄位為 `"MIT OR Apache-2.0"`。
+  3. 同步更新 `README.md`、`README.en.md` 與 `CONTRIBUTING.md` 之授權標誌與條款。
+- **Evidence**：Wheel 建置與 editable 安裝成功；Linter、Governance Audit 與 25 項單元測試 100% 通過。
